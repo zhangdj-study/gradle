@@ -1,0 +1,4 @@
+dependencies {
+    //引用其他子模块
+    compile project(":api")
+}

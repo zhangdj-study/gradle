@@ -1,0 +1,42 @@
+//allprojects 可以让子模块都可以供用配置
+allprojects {
+
+    apply plugin : 'java'
+
+    group 'com.neusiri'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+
+/**
+ * 仓库路径 mavenCentral()表示使用中央仓库
+ * 默认jar包存放路径C:\Users\neusoft\.gradle\caches\modules-2\files-2.1
+ *
+ *     mavenLocal()
+ *     mavenCentral()
+ *     以上配置表示先从本地仓库寻找依赖，如果没有再从中央仓库下载
+ *
+ *     mavenCentral()
+ *     以上配置表示，指定的jar包位置已经存在该jar包，则不会下载，没有则会从中央仓库下载
+ *
+ */
+    repositories {
+        //本地maven仓库可以用过 USER_HOME/.m2/下的settings.xml配置文件修改默认路径位置（可以直接把maven下的setting.xml复制到.m2下）
+        mavenLocal()
+        mavenCentral()
+    }
+
+/**
+ * 1、gradle工程所有jar包均放在dependencies中
+ * 2、每一个jar包有三个元素 group、name、version
+ * 3、testCompile表示该Jar包在测试的时候起作用，该属性为jar包的作用域
+ * 4、在gradle添加坐标的时候要带上jar包的作用域
+ */
+    dependencies {
+        testCompile group: 'junit', name: 'junit', version: '4.12'
+        // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
+        compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.1.RELEASE'
+    }
+}
+
+
