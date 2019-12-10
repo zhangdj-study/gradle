@@ -1,4 +1,4 @@
-//allprojects 可以让子模块都可以供用配置
+//allprojects 可以让子模块都可以共用配置
 allprojects {
 
     apply plugin : 'java'
